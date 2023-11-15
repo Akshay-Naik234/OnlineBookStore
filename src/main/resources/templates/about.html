@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About Us Page</title>
+</head>
+
+<body>
+	<section>
+		<div class="jumbotron">
+			<div class="container">
+		
+				<h1 class="display-3 mt-4"><b>Online Book Store</b></h1>
+				<p><b>Online Book Store</b> Bookstore definition of nothing more than display, retail point of sale of
+					published material, in addition to sale of specific commodities, no different from other sales
+					channels, from this point of view, the basic functions of Internet bookstores as well, but online
+					bookstore is another type of publication publicity or sales channels, or even complementary
+					traditional stores. The so-called “Internet bookstores” In addition to the general e-commerce
+					functions, should also include several of the following services:
+				<p id="show" style="display: none;">E-commerce is revolutionizing the way we all shop in India.
+					Why do you want to hop from one store to another in search of the latest phone when you can find it
+					on the Internet in a single click? Not only mobiles.
+					Myshop houses everything you can possibly imagine, from trending electronics like laptops, tablets,
+					smartphones, and mobile accessories to in-vogue fashion staples like shoes, clothing and lifestyle
+					accessories; from modern furniture like sofa sets,
+					dining tables, and wardrobes to appliances that make your life easy like washing machines, TVs, ACs,
+					mixer grinder juicers and other time-saving kitchen and small appliances; from home furnishings like
+					cushion covers,
+					mattresses and bedsheets to toys and musical instruments, we got them all covered. You name it, and
+					you can stay assured about finding them all here. For those of you with erratic working hours,
+					Myshop is your best bet. Shop in your PJs,
+					at night or in the wee hours of the morning. This e-commerce never shuts down.
+				</p>
+				<button onclick="show();" class="btn btn-primary btn-lg ">Learn more &raquo;</button>
+
+			</div>
+		</div>
+
+		<div class="container mt-4">
+			<div class="mt-4">
+					<h2>Collection of the best Feng</h2>
+					<p>Because the traditional bookstore outlets, whether or storage space is limited, often under
+						pressure to cost only the best-selling book called for the sale of the main, for the special
+						needs of readers or a more popular books are unable to take into account.</p>
+					<p id="showp1" style="display: none;">But digital technology has brought the solution to this
+						troubled approach to current technology, only very little space to store large amounts of data
+						and be able to quickly find the information they need, but also long-term preservation, changes
+						also very easy, of course, books can provide readers with a variety of consulting needs.</p>
+					<button id="button1" class="btn btn-secondary" onclick="showp1();"> View details</button>
+				</div>
+				
+				<div class="mt-4">
+					<h2>Facilitate the retrieval</h2>
+					<p> Â In traditional bookstores to find a book, in addition to the store to see whether the proper
+						classification of furnishings, the staff sometimes had to humbly trouble to help, even worse is
+						that often or can not find.</p>
+					<p id="showp2" style="display:none;">And this is what you know to find the book when it is
+						occurring, if you only want to find some information in accordance with, Zhu will be lost in the
+						vast sea of books in the. However, digital information is different. Unlike traditional methods,
+						the book is the biggest advantage of the information it can use indexed files, to facilitate the
+						inquiry. If you do not need to know the complete information, just enter keywords or part of the
+						message, you can quickly find the information they need. Online bookstores and book sales are
+						not confined to best-selling book, even if the physical channel has shelves of books, but also
+						sales space. Many office workers do not have time to buy books through online bookstores to save
+						time not only costs, but also through accurate bibliographic management, to find books on
+						derivatives, which is when the person to physical bookstores, never fun and experience.</p>
+					<button id="button2" class="btn btn-secondary" onclick="showp2();"> View details</button>
+				</div>
+				<div class="mb-5 mt-4">
+					<h2>Book presentation and reading test</h2>
+					<p>Books is not necessarily an impulse purchase of goods, people, for most of the books, unless the
+						original request that had come to buy a particular book, most of the time to buy books to keep
+						it afloat as a leisure activity , in the first reading in the bookstore, and then, as the case
+						to buy, therefore, provide a complete online bookstore is part of the book describes the trial
+						and read, is very important for the reader, and is the best each book, rather than only for
+						specific marketing books.</p>
+					<p id="showp3" style="display:none;">Since the July 1995 establishment of the Amazon bookstore, Zhu
+						stated on the page “on the Internet to establish an additional customer-oriented bookstore,
+						customers roam online, and to provide the most diverse
+
+						Select “Since then, the business can be online bookstore and other online retailers, like,
+						gradually enter the stage of development of electronic commerce. Development since 1995, some
+						gone through four stages:
+
+						The first stage: 1995 to 1997, during the network’s new focus on stress and facilitate
+
+						The second stage: 1998 ~ 1999, Internet commerce is becoming intense competition, consumers and
+						businesses are turning their attention to pricing competition; but since late 1999, feeling
+						faint and sensitive industry alone has enough affordable to convince consumers
+
+						The third stage: 2000 to 2004, the price is still considered one of the factors, but emphasizes
+						the scope of consumer goods like color extended to cover the provision of quality assurance,
+						online trading conditions, and other service delivery so that the full range of shopping
+						experiences.
+
+						The Four stage: 2004 to the present, to network security, payment convenience, variety and
+						complete articles, the online bookstore branched out into 3C, beauty, variety of cultural
+						activities as an extension of the portal has grown into a trend of transformation. If the above
+						criteria to measure the online bookstore in Taiwan’s development can be said to have entered the
+						fourth stage.
+					</p>
+					<button id="button3" class="btn btn-secondary" onclick="showp3();"> View details</button>
+				</div>
+
+			<hr>
+
+		</div> <!-- /container -->
+
+		<script>
+
+			function show() {
+				var x = document.getElementById('show');
+				if (x.style.display == 'none') {
+					x.style.display = 'inline-block';
+				}
+				else {
+					x.style.display = 'none'
+				}
+			}
+
+			function showp1() {
+				var x = document.getElementById('showp1');
+				if (x.style.display == 'none') {
+					x.style.display = 'inline-block';
+					document.getElementById('button1').innerHTML = 'Hide Details';
+				}
+				else {
+					x.style.display = 'none';
+					document.getElementById('button1').innerHTML = 'View Details';
+				}
+			}
+
+			function showp2() {
+				var x = document.getElementById('showp2');
+				if (x.style.display == 'none') {
+					x.style.display = 'inline-block';
+					document.getElementById('button2').innerHTML = 'Hide Details';
+				}
+				else {
+					x.style.display = 'none';
+					document.getElementById('button2').innerHTML = 'View Details';
+				}
+			}
+
+			function showp3() {
+				var x = document.getElementById('showp3');
+				if (x.style.display == 'none') {
+					x.style.display = 'inline-block';
+					document.getElementById('button3').innerHTML = 'Hide Details';
+				}
+				else {
+					x.style.display = 'none';
+					document.getElementById('button3').innerHTML = 'View Details';
+
+				}
+			}
+
+		</script>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="Admin/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home Page</title>
+</head>
+
+<body>
+	<section>
+		<div class="hi" style="margin-left: 130px;">
+			<form id="login-form" class="form" th:object="${order_details}"
+				th:action="@{/admin/orders/statusUpdateProcess}" method="post">
+				<h3 class="text-center text-info">Update Order Details Page</h3>
+
+				<input type="hidden" name="id" th:value="${oid}">
+				<input type="hidden" name="order_id" th:value="${order_id}">
+
+				<div class="form-group">
+
+					<label for="orderStatus">Choose The Order Status</label>
+
+					<select name="orderStatus" id="orderStatus">
+						<option value="Order Request Received">Order Request Received</option>
+						<option value="Order Processing">Order Processing</option>
+						<option value="Order Delivered">Order Delivered</option>
+					</select>
+				<!--
+					<label for="orderUpdate">Enter the order update</label>
+					<input type="text" name="orderUpdate">
+					-->
+				</div><br>
+				<div class="input-group mt-3">
+				<label for="orderUpdate">Enter the order update</label>
+					<textarea name="orderUpdate" id="mytextarea" class="form-control" rows="10"
+						th:text="${order_update}" placeholder="Enter the Order Update"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+				</div>
+
+			</form>
+
+		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+		<script>
+            $(document).ready(()=>{
+                $('.item').removeClass('active');
+                $('#add-contact').addClass("active");
+            });
+			
+        </script>
+	</section>
+</body>
+
+</html>

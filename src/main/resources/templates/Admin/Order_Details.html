@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="Admin/base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <section>
+    <div class="hi" style="margin-left: 130px;">
+		<h1 th:text="'Order Details for Order id ' + ${order_id}"></h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Order id</th>
+                    <th>Book id</th>
+                    <th>Book Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>SubTotal</th>
+                    <th>Order Status</th>
+                    <th>Order Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="order,status : ${orders_details}">
+                    <tr>
+                    
+                       	<td th:text="${order.id}"></td>
+                        <td th:text="${order.orders.id}"></td>
+                        <td th:text="${order.book.id}"></td>
+                        <td th:text="${order.book.name}"></td>
+                        <td th:text="${order.quantity}"></td>
+                        <td th:text="${order.unit_price}"></td>
+                        <td th:text="${order.subtotal}"></td>
+                        <td th:text="${order.orderStatus}"></td>
+                        <td th:utext="${order.orderUpdate}"></td>
+                    	<td><a th:href="@{'/admin/orders/' +${order.id}+'/updateStatus'}" class="btn btn-success">Update</a></td>
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table>
+    </div>
+    </section>
+</body>
+</html>

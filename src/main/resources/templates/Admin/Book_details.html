@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="Admin/base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <section>
+    
+		<div class="hi" style="margin-left: 130px;"}>
+		<h5 class="card-title" th:text="${book.title}"></h5>
+		<h5 class="card-title" th:text="${book.price}"></h5>
+		<h5 th:text="'Author Name '+ ${book.author}"></h5>
+			<span><img style="height:200px; width: 200px;" th:if="${book.image!=''}" class="my_profile_picture"
+					th:src="*{'data:image/jpeg;base64,'+{book.image}}" alt="profile photo">
+
+				<img style="height:200px; width: 200px;" th:unless="${book.image!=''}" class="my_profile_picture"
+					th:src="@{'/img/unknown.jpg'}" alt="profile photo"></span>
+			
+		<h6 class="card-title" th:utext="${book.description}"></h6>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </section>
+</body>
+</html>

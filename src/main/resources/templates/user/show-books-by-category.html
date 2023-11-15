@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="user/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Display Page</title>
+</head>
+
+<body>
+	<section>
+		<div class="hi">
+
+
+			<div class="row justify-content-evenly mt-2 mb-3" th:if="${List1}">
+				<div class="col-3" th:each="a1 : ${List1}">
+					<div class="card" style="width: 18rem;">
+						<!--<img class="card-img-top" src="/img/book2.jpg" th:src="@{'/img/'+${a1.image}}"
+							alt="Card image cap">-->
+						<img class="card-img-top" th:if="${a1.image!=''}" 
+							th:src="*{'data:image/jpeg;base64,'+{a1.image}}" alt="profile photo">
+
+						<img class="card-img-top" th:unless="${a1.image!=''}" 
+							th:src="@{'/img/unknown.jpg'}" alt="profile photo">
+						<div class="card-body">
+							<a th:href="@{'/user/books/' + ${a1.id} +'/book'}">
+								<h5 class="card-title" th:text="${a1.title}"></h5>
+							</a>
+							<p class="card-text" th:text="${a1.price}"></p>
+							<p class="card-text" th:utext="${a1.Category}"></p>
+							<a th:href="@{'/user/books/'+${a1.id}+'/book'}" class="btn btn-primary"
+								style="margin-right: 10px;">Show More</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row justify-content-evenly mt-4 mb-3" th:if="${List2}">
+				<div class="col-3" th:each="b1 : ${List2}">
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" th:if="${b1.image!=''}" 
+							th:src="*{'data:image/jpeg;base64,'+{b1.image}}" alt="profile photo">
+
+						<img class="card-img-top" th:unless="${b1.image!=''}" 
+							th:src="@{'/img/unknown.jpg'}" alt="profile photo">
+						<div class="card-body">
+							<a th:href="@{'/user/books/' + ${b1.id} +'/book'}">
+								<h5 class="card-title" th:text="${b1.title}"></h5>
+							</a>
+							<p class="card-text" th:text="${b1.price}"></p>
+							<p class="card-text" th:utext="${b1.Category}"></p>
+							<a th:href="@{'/user/books/'+${b1.id}+'/book'}" class="btn btn-primary"
+								style="margin-right: 10px;">Show More</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row justify-content-evenly mt-4 mb-3" th:if="${List3}">
+				<div class="col-3" th:each="c1 : ${List3}">
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" th:if="${c1.image!=''}" 
+							th:src="*{'data:image/jpeg;base64,'+{c1.image}}" alt="profile photo">
+
+						<img class="card-img-top" th:unless="${c1.image!=''}" 
+							th:src="@{'/img/unknown.jpg'}" alt="profile photo">
+						<div class="card-body">
+							<a th:href="@{'/user/books/' + ${c1.id} +'/book'}">
+								<h5 class="card-title" th:text="${c1.title}"></h5>
+							</a>
+							<p class="card-text" th:text="${c1.price}"></p>
+							<p class="card-text" th:utext="${c1.Category}"></p>
+							<a th:href="@{'/user/books/'+${c1.id}+'/book'}" class="btn btn-primary"
+								style="margin-right: 10px;">Show More</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<nav aria-label="Page navigation example">
+				<ul class="pagination" style="margin-left: 100px;">
+					<li th:if="${currentPage !=0}" class="page-item"><a
+							th:href="@{'/user/books/'+${category}+'/'+${currentPage-1}}" class="page-link"
+							href="#">Previous</a></li>
+					<li th:classappend="${currentPage==i-1 ? 'active':''}"
+						th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a
+							th:href="@{'/user/books/'+${category}+'/'+${i-1}}" class="page-link" href="#"><span
+								th:text="${i}"></span></a></li>
+
+
+					<li th:if="${currentPage+1 != totalPages}" class="page-item"><a
+							th:href="@{'/user/books/'+${category}+'/'+${currentPage+1}}" class="page-link"
+							href="#">Next</a></li>
+
+				</ul>
+			</nav>
+		</div>
+		<!--Pagination Part-->
+
+
+
+
+	</section>
+</body>
+
+</html>

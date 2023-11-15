@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="user/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shopping Cart Page</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+	<section>
+		<div class="hi" style="margin-left: 130px;">
+			<div>
+				<h1>Your Shopping Cart</h1>
+				<br>
+			</div>
+
+			<div class="row m-1">
+				<div class="col-sm-8">
+					<th:block th:each="item,status : ${cartItems}">
+						<div class="row border rounded">
+							<div class="col-1">
+								<div>[[${status.count}]]</div>
+								<div><a class="fas fa-trash icon-dark link-remove"
+										th:href="@{'/cart/remove/' + ${item.book.id}}"></a></div>
+							</div>
+							<div class="col-3">
+							
+								<img style="height: 150px;width:auto" th:if="${item.book.image!=''}"
+									th:src="*{'data:image/jpeg;base64,'+{item.book.image}}" alt="hello"
+									class="img-fluid" />
+								<img style="height: 150px;width:auto" th:unless="${item.book.image!=''}" th:src="@{'/img/unknown.jpg'}"
+									alt="hello" class="img-fluid" />
+								
+							</div>
+
+							<div class="col-6">
+								<div>
+									<a th:href="@{'/user/books/'+${item.book.id}+'/book'}">
+										<b>[[${item.book.name}]]</b>
+									</a>
+								</div>
+								<div
+									th:replace="user/quantity_control :: quantity_control(${item.quantity},${item.book.id},${item.book.availableQuantity})">
+									Quantity</div>
+								<div>
+									<span>X</span>
+									<span>[[${item.book.price}]]</span>
+								</div>
+								<div>
+									<span>=</span><span th:id="'subtotal' + ${item.book.id}" class="h4 productSubtotal">
+										[[${item.subtotal}]]</span>
+								</div>
+							</div>
+						</div>
+						<div class="row m-1">
+
+						</div>
+					</th:block>
+				</div>
+				<div class="col-sm-4" th:unless="${#lists.isEmpty(cartItems)}">
+					<div>
+						<span class="h3">Estimated Total : </span>
+					</div>
+					<input type="hidden" id="total" th:value="${total}">
+					<div class="mt-2">
+						<span class="h2" id="totalAmount"></span>
+					</div>
+					<div class="mt-2">
+						<a class="btn btn-primary mt-2" th:if="${address} == 'null'" th:href="@{/user/address}">Add
+							Address</a>
+						<a class="btn btn-primary mt-2" th:if="${address} == 'notnull'" th:href="@{/user/address}">
+							Update Address</a>
+						<a class="btn btn-primary mt-2" th:if="${address} == 'notnull'" onclick="paymentStart()"> Check
+							Out</a>
+					</div>
+				</div>
+			</div>
+
+			<div th:if="${#lists.isEmpty(cartItems)}">
+				<h3>You Have Not Chosen any products Yet</h3>
+			</div>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	</section>
+</body>
+
+</html>

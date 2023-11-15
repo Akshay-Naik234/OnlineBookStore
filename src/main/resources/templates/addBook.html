@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="Admin/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Book Page</title>
+</head>
+
+<body>
+	<section>
+	<div style="margin-left:130px">
+		<div class="card mr-3 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">
+					Add Book
+				</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							<form action="" th:object="${book}" enctype="multipart/form-data" method="POST"
+								th:action="@{/admin/process-book}" class="mt-2">
+								<!-- Author Name-->
+								<div class="input-group">
+									<input type="text" id="author" name="author" required placeholder="Enter Author Name Here"
+										class="form-control">
+								</div>
+
+								<!--Book Name-->
+								<div class="input-group mt-3">
+									<input type="text" id="name" required name="name"
+										placeholder="Enter Book Name Here" class="form-control">
+								</div>
+								
+								<!--Book Description-->
+								<div class="input-group mt-3">
+									<textarea name="description" id="mytextarea" class="form-control" rows="10"
+										placeholder="Enter Book Description"></textarea>
+								</div>
+								
+								<!--Book title-->
+								<div class="input-group mt-3">
+									<input type="text" id="title" required name="title"
+										placeholder="Enter Book title Here" class="form-control">
+								</div>
+								
+								<div class="input-group mt-3">
+									<input type="text" id="category" required name="category"
+										placeholder="Enter Book Category here" class="form-control">
+								</div>
+								
+								<div class="input-group mt-3">
+									<input type="number" id="availableQuantity" required name="availableQuantity"
+										placeholder="Enter total quantity of Book here" class="form-control">
+								</div>
+								
+								<div class="input-group mt-3">
+									<input type="number" id="price" required name="price"
+										placeholder="Enter the price of Book here" class="form-control">
+								</div>
+
+								<!--Contact Image-->
+								<div class="custom-file mt-3">
+									<input type="file" name="bookImage">
+								</div>
+
+								<div class="container text-center mb-5">
+									<button class="btn btn-outline-primary">Save Book</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+		<script>
+            $(document).ready(()=>{
+                $('.item').removeClass('active');
+                $('#add-contact').addClass("active");
+            });
+			
+        </script>
+				
+	</section>
+</body>
+
+</html>

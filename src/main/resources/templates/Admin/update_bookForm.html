@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="Admin/base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <section>
+    <div class="hi" style="margin-left: 130px;">
+		<form method="post" th:href="@{'/admin/books/' + ${c1.id} +'/book'}">
+    </div>
+    </section>
+</body>
+</html>

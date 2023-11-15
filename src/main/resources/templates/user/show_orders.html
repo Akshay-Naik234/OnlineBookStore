@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="user/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home Page</title>
+</head>
+
+<body>
+	<section>
+		<div class="hi" style="margin-left: 130px;">
+			<h1>All Orders</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>email</th>
+						<th>Total</th>
+						<th>Order Time</th>
+						<th>Address</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="order,status : ${orders}">
+						<tr>
+
+							<td><a th:href="@{'/user/orders/' + ${order.id}}" th:text="${order.id}"></a></td>
+							<td th:text="${order.first_name}"></td>
+							<td th:text="${order.email}"></td>
+							<td th:text="${order.total}"></td>
+							<td th:text="${order.order_time}"></td>
+							<td th:text="${order.address}"></td>
+							<td th:text="${order.order_status}"></td>
+						</tr>
+
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="user/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home Page</title>
+</head>
+
+<body>
+	<section>
+	<div style="margin-left: 200px;margin-bottom:150px">
+		<div class="card">
+			<div class="card-body">
+				<div class="container text-center">
+					<img style="height:200px; width: 200px;" th:if="${user.image!=''}" class="my_profile_picture" src="/img/default.jpg"
+						th:src="*{'data:image/jpeg;base64,'+{user.image}}" alt="profile photo">
+					
+					<img style="height:200px; width: 200px;" th:unless="${user.image!=''}" class="my_profile_picture" src="/img/default.jpg"
+						th:src="@{'/img/unknown.jpg'}" alt="profile photo">
+				</div>
+				<h1 class="text-center mt-3" th:text="${user.name}"></h1>
+				<div class="table-responsive">
+					<table class="table" style="margin-bottom: 4px;">
+						<thead>
+							<tr>
+								<th scope="col">#UserId</th>
+								<th scope="col">
+									<span th:text="${user.id}"></span>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+								<td><span th:text="${user.email}"></span>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">Role</th>
+								<td><span th:text="${user.role}"></span>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">Phone</th>
+								<td><span th:text="${user.phone}"></span>
+								</td>
+							</tr>
+							
+							<tr>
+								<th scope="row">Country</th>
+								<td><span th:text="${user.country}"></span>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<div class="text-center mt-4">
+			<a th:href="@{/user/update-profile}" class="btn btn-primary">Update Profile</a>
+		</div>
+		
+	</div>
+	
+		<script>
+			$(document).ready(() => {
+				$('.item').removeClass('active');
+				$('#profile').addClass("active");
+			});
+
+		</script>
+	</section>
+</body>
+
+</html>

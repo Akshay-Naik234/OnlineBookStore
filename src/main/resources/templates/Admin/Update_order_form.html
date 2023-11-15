@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="Admin/base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home Page</title>
+</head>
+
+<body>
+	<section>
+		<div class="hi" style="margin-left: 130px;">
+			<form id="login-form" class="form" th:object="${orders}" th:action="@{/admin/orders/statusUpdate}" method="post">
+				<h3 class="text-center text-info">Update Order Page</h3>
+				
+				<input type="hidden" name="id" th:value="${Oid}">
+				
+				<div class="form-group">
+					
+					<label for="order_status">Choose The Order Status</label>
+					
+					<select name="order_status" id="order_status">
+						<option value="Order Request Received">Order Request Received</option>
+						<option value="Order Processing">Order Processing</option>
+						<option value="Order Delivered">Order Delivered</option>
+					</select>
+				</div><br>
+				<div class="form-group">
+					<input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+				</div>
+
+			</form>
+
+		</div>
+	</section>
+</body>
+
+</html>

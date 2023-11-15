@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:fragment="Layout(content)">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+	<title th:text="${title}">Base html</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
+	<!--
+	<script type="text/javascript" src="/js/quantity_control.js"></script>
+	-->
+	<script type="text/javascript" src="/js/add_to_cart.js"></script>
+	<script type="text/javascript" src="/js/shopping_cart.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Online Book Store</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							Category
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+							<li><a class="dropdown-item" th:each="category : ${categories}" th:value="${category}"
+									th:text="${category}" th:href="@{'/admin/books/'+${category}+'/0'}"></a></li>
+						</ul>
+					</li>
+				</ul>
+				
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">Logout</a>
+				</li>
+				
+			</div>
+		</div>
+	</nav>
+
+	<!-- <h1>Hello</h1> -->
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<span class="crossBtn" style="font-size: 30px;" onclick="toggleSidebar()">&times;</span>
+		<a id="contacts" th:href="@{/admin/books/0}" class="item"><i class="fas fa-id-card-alt"></i> View Books</a>
+		<a id="add-contact" th:href="@{/admin/books/create}" class="item"><i class="fas fa-pencil-alt"></i> Add Book</a>
+		<a id="profile" th:href="@{/admin/orders/request/0}" class="item"><i class="fas fa-user-circle"></i> Order Requested </a>
+		<a id="profile1" th:href="@{/admin/orders/process/0}" class="item"><i class="fas fa-user-circle"></i> Order Processing </a>
+		<a id="profile2" th:href="@{/admin/orders/delivered/0}" class="item"><i class="fas fa-user-circle"></i> Order Delivered</a>
+		<a id="add-contact" th:href="@{/admin/orders/0}" class="item"><i class="fas fa-pencil-alt"></i> Show All Orders</a>
+
+		<a class="item" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+		<div class="divider"></div>
+	</div>
+
+
+	<div class="content">
+		<i class="fas fa-bars m-3" onclick="toggleSidebar()"></i>
+	</div>
+	<div th:if="${session.message}" class="container">
+		<div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+			<span th:text="${session.message.content}"></span>
+		</div>
+		<th:block th:text="${#session.removeAttribute('message')}">/</th:block>
+	</div>
+	<div th:replace="${content}">
+	</div>
+
+
+
+
+
+	<div class="footer">
+		<p>&copy; Copyright 2023 BugBuster India Inc. All rights reserved</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+</html>

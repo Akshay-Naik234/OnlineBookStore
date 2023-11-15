@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div th:fragment="quantity_control(qtyValue,bookId,availableQuantity)">
+		<nav>
+			<ul class="pagination">
+				<li class="page-item">
+					<a href="" class="page-link minusButton" th:pid="${bookId}">
+						<b>-</b>
+					</a>
+				</li>
+				<li class="page-item">
+					<input type="text" th:value="${qtyValue}"
+						class="form-control text-center" onkeydown="return false" style="max-width:55px;"
+						th:id="'quantity' + ${bookId}">
+				</li>
+				<li class="page-item">
+					<a href="" class="page-link plusButton" th:pid="${bookId}" th:q="${availableQuantity}">
+						<b>+</b>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	
+</body>
+
+<head>

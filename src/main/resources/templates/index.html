@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <section class="banner d-flex justify-content-center align-items-center" style="margin-bottom: 15px;">
+    	<div class="" style="margin-left: 10%;margin-bottom: 20%;">
+    	<div class="text-center">
+    		<h1 class="font-weight-bold">Online Book Store</h1>
+    		<p>
+    			Start Exploring the books in Easier and smarter way.
+    		</p>
+    		<a class="btn bg-primary btn-lg text-white" th:href="@{/signin}">Get Start</a>
+    	</div>
+    	</div>
+    </section>
+</body>
+</html>
